@@ -1,4 +1,7 @@
-﻿using ExcelDna.Integration.CustomUI;
+﻿using System;
+using System.Runtime.InteropServices;
+using ExcelDna.Integration;
+using ExcelDna.Integration.CustomUI;
 
 namespace Pearson.Excel.Plugin.Ribbon
 {
@@ -7,6 +10,11 @@ namespace Pearson.Excel.Plugin.Ribbon
         private readonly IRibbonUI _ribbon;
         private readonly string _type;
         public string Id { get; set; }
+        public string Label { get; set; }
+        public string ImageMso { get; set; }
+        public bool IsEnabled { get; set; }
+        public bool IsVisible { get; set; }
+        public Action OnInvalidate { get; set; }
 
         public RibbonControl(string type, IRibbonUI ribbon)
         {
@@ -19,6 +27,10 @@ namespace Pearson.Excel.Plugin.Ribbon
             _ribbon = ribbon;
         }
 
-
+        public void Invalidate()
+        {
+            OnInvalidate?.Invoke();
+            ExcelAsyncUtil.QueueAsMacro(() => _ribbon.InvalidateControl(Id));
+        }
     }
 }

@@ -7,9 +7,9 @@
       <ribbon startFromScratch="false">
         <tabs>
           <tab id="PearsonExcelTab" label="Pearson Excel">
-            <group id="CalculationGroup" label="Calculation">
-              <button id="btnCalcNow" label="Calculate Now" imageMso="AcceptInvitation" size="large" onAction="OnAction"/>
-              <button id="btnCalcSheet" label="Calculate Sheet" imageMso="AccessFormDatasheet" size="large" onAction="OnAction"/>
+            <group id="CalculationGroup" label="Calculation" getVisible="GetVisible">
+              <button id="btnCalcNow" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
+              <button id="btnCalcSheet" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
             </group>
           </tab>
         </tabs>
