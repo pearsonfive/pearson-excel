@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DnaLibrary Name="pearson-excel-plugin Add-In" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2018/05/dnalibrary">
+  <ExternalLibrary Path="pearson-excel-plugin.dll" ExplicitExports="false" LoadFromBytes="true" Pack="true" IncludePdb="false" />
+
+  <CustomUI>
+    <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+      <ribbon startFromScratch="false">
+        <tabs>
+          <tab id="PearsonExcelTab" label="Pearson Excel">
+            <group id="CalculationGroup" label="Calculation">
+              <button id="btnCalcNow" label="Calculate Now" imageMso="AcceptInvitation" size="large" onAction="OnAction"/>
+              <button id="btnCalcSheet" label="Calculate Sheet" imageMso="AccessFormDatasheet" size="large" onAction="OnAction"/>
+            </group>
+          </tab>
+        </tabs>
+      </ribbon>
+    </customUI>
+  </CustomUI>
+
+</DnaLibrary>
