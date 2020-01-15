@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,8 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addin.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RibbonHandler.cs" />
+    <Compile Include="Ribbon\DropDownRibbonControl.cs" />
+    <Compile Include="Ribbon\ButtonRibbonControl.cs" />
     <Compile Include="Ribbon\RibbonControl.cs" />
   </ItemGroup>
   <ItemGroup>

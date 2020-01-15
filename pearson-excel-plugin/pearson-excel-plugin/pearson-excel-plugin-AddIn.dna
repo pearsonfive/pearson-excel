@@ -11,6 +11,15 @@
               <button id="btnCalcNow" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
               <button id="btnCalcSheet" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
             </group>
+            <group id="ExamplesGroup" label="Examples" getVisible="GetVisible">
+              <dropDown id="dropDownExample" getSelectedItemID="GetSelectedItemId" onAction="OnActionDropDown" getLabel="GetLabel">
+                <item id="i0" label="0"/>
+                <item id="i1" label="1"/>
+                <item id="i2" label="2"/>
+                <item id="i3" label="3"/>
+              </dropDown>
+              <dynamicMenu id="dynamicMenuExample" getLabel="GetLabel" getContent="GetDynamicMenuContent" getImage="GetImage" getEnabled="GetEnabled"/>
+            </group>
           </tab>
         </tabs>
       </ribbon>
