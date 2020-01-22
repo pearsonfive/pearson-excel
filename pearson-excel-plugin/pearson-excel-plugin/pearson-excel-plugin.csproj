@@ -71,6 +71,8 @@
     <Compile Include="Ribbon\DropDownRibbonControl.cs" />
     <Compile Include="Ribbon\ButtonRibbonControl.cs" />
     <Compile Include="Ribbon\RibbonControl.cs" />
+    <Compile Include="SourceCode\Manager.cs" />
+    <Compile Include="SourceCode\NameInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="customUI.xsd">
