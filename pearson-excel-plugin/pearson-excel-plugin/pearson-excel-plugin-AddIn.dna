@@ -10,6 +10,8 @@
             <group id="CalculationGroup" label="Calculation" getVisible="GetVisible">
               <button id="btnCalcNow" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
               <button id="btnCalcSheet" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
+              <button id="btnCalcFullRebuild" size="large" getLabel="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnAction"/>
+              <toggleButton id="tglCalcAuto" size="normal" getLabel="GetLabel" getEnabled="GetEnabled" getVisible="GetVisible" onAction="OnActionPressed" getPressed="GetPressedToggle"/>
             </group>
             <group id="ExamplesGroup" label="Examples" getVisible="GetVisible">
               <dropDown id="dropDownExample" getSelectedItemID="GetSelectedItemId" onAction="OnActionDropDown" getLabel="GetLabel">

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pearson-excel-plugin", "pearson-excel-plugin\pearson-excel-plugin.csproj", "{DBE7FC6D-6EC4-479C-991D-600E3EBC059C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pearson-excel-utilities", "pearson-excel-utilities\pearson-excel-utilities.csproj", "{0539B3E3-C148-4E00-874B-CDB801B9F6AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBE7FC6D-6EC4-479C-991D-600E3EBC059C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBE7FC6D-6EC4-479C-991D-600E3EBC059C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBE7FC6D-6EC4-479C-991D-600E3EBC059C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0539B3E3-C148-4E00-874B-CDB801B9F6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0539B3E3-C148-4E00-874B-CDB801B9F6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0539B3E3-C148-4E00-874B-CDB801B9F6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0539B3E3-C148-4E00-874B-CDB801B9F6AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

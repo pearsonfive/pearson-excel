@@ -1,14 +1,17 @@
-﻿using ExcelDna.Integration;
+﻿using System;
+using ExcelDna.Integration;
 using ExcelDna.Integration.CustomUI;
 using NetOffice.ExcelApi;
 using Pearson.Excel.Plugin.Ribbon;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Pearson.Excel.Plugin.Extensions;
+using NetOffice.ExcelApi.Enums;
 using Action = System.Action;
 using Application = NetOffice.ExcelApi.Application;
+using Pearson.Excel.Utilities.Extensions;
 
 namespace Pearson.Excel.Plugin
 {
@@ -28,6 +31,8 @@ namespace Pearson.Excel.Plugin
 
             new List<RibbonControl>
             {
+
+                // Calculation Group
                 new RibbonControl(_ribbon)
                 {
                     Id = "CalculationGroup",
@@ -54,6 +59,24 @@ namespace Pearson.Excel.Plugin
                         ((Worksheet) app.ActiveSheet)?.Calculate();
                     }
                 },
+                new ButtonRibbonControl(_ribbon)
+                {
+                    Id = "btnCalcFullRebuild",
+                    Label = "Calculate Full Rebuild",
+                    ImageMso = "RecurrenceEdit",
+                    IsEnabled = true,
+                    IsVisible = true,
+                    OnAction = control => app.CalculateFullRebuild()
+                },
+                new ToggleButtonRibbonControl(_ribbon)
+                {
+                    Id = "tglCalcAuto",
+                    Label = "AutoCalc",
+                    IsEnabled = true,
+                    IsVisible = true
+                },
+                
+                // Examples Group
                 new RibbonControl(_ribbon)
                 {
                     Id = "ExamplesGroup",
@@ -80,7 +103,44 @@ namespace Pearson.Excel.Plugin
             XNamespace ns = NamespaceCustomUI2010;
             _dynamicMenuContent = new XElement(ns + "menu");
             buildDynamicContent(_dynamicMenuContent, ns);
+
+            // timer to update ribbon intermittently
+            Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1000))
+                .Subscribe(x =>
+                {
+                    try
+                    {
+                        ExcelAsyncUtil.QueueAsMacro(()=> _ribbon.Invalidate());
+                    }
+                    catch
+                    {
+                        //swallow
+                    }
+                });
         }
+
+        #region  Callbacks
+
+        public bool GetPressedToggle(IRibbonControl control)
+        {
+            try
+            {
+                return app.Calculation == XlCalculation.xlCalculationAutomatic;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void OnActionPressed(IRibbonControl control, bool isPressed)
+        {
+            app.Calculation = isPressed ? XlCalculation.xlCalculationAutomatic : XlCalculation.xlCalculationManual;
+        }
+
+        #endregion
+
+
 
         private void buildDynamicContent(XElement menu, XNamespace ns)
         {
@@ -130,6 +190,8 @@ namespace Pearson.Excel.Plugin
         {
             ExcelAsyncUtil.QueueAsMacro(() => _ribbon.Invalidate());
         }
+
+
 
         #region Get*****
 

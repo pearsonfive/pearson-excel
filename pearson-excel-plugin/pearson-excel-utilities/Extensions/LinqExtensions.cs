@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pearson.Excel.Plugin.Extensions
+namespace Pearson.Excel.Utilities.Extensions
 {
     public static class LinqExtensions
     {

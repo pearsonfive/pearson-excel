@@ -4,7 +4,7 @@ using System.Linq;
 using ExcelDna.Integration;
 using NetOffice.VBIDEApi;
 using NetOffice.VBIDEApi.Enums;
-using Pearson.Excel.Plugin.Extensions;
+using Pearson.Excel.Utilities.Extensions;
 using Application = NetOffice.ExcelApi.Application;
 
 namespace Pearson.Excel.Plugin.SourceCode
