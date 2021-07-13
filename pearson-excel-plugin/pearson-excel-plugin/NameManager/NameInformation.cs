@@ -14,7 +14,16 @@ namespace Pearson.Excel.Plugin.NameManager
                 refersToRange = value.RefersToRange;
             }
         }
-
+        public string Key
+        {
+            get
+            {
+                if (!(IsRefError || IsFormula)) return $"{WorkbookName}|{ShortName}|{Scope}";
+                if (IsRefError) return $"referror|{ShortName}|{Scope}";
+                if (IsFormula) return $"formula|{ShortName}|{Scope}";
+                return "";
+            }
+        }
         public Worksheet Worksheet
         {
             get
