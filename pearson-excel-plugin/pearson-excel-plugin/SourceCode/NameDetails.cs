@@ -1,9 +1,8 @@
-﻿using System.Diagnostics.Eventing.Reader;
-using NetOffice.ExcelApi;
+﻿using NetOffice.ExcelApi;
 
 namespace Pearson.Excel.Plugin.SourceCode
 {
-    public class NameInformation
+    public class NameDetails
     {
         public Name Name { get; set; }
         public string RangeName => Name.Name;

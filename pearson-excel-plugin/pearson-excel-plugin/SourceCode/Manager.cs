@@ -31,9 +31,9 @@ namespace Pearson.Excel.Plugin.SourceCode
             };
 
             var namesList = names
-                .Select(nm => new NameInformation {Name = nm})
-                .OrderBy(nm => nm.RangeName)
-                .Select(nm => $"{nm.RangeName,-55} {nm.Scope, -30} {nm.Address}");
+                .Select(nm => new NameDetails {Name = nm})
+                .OrderBy(nameInfo => nameInfo.RangeName)
+                .Select(nameInfo => $"{nameInfo.RangeName,-55} {nameInfo.Scope, -30} {nameInfo.Address}");
             var result = header.Concat(namesList).Aggregate((temp, next) => temp + Environment.NewLine + next);
 
             var fullPath = Path.Combine(folder, "NamedRanges.txt");
