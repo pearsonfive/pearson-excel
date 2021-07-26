@@ -7,7 +7,8 @@ namespace Pearson.Excel.Plugin
     {
         public void AutoOpen()
         {
-            
+            var funcRegistration = new RemoteFunctions.FunctionRegistration();
+            funcRegistration.Register();
         }
 
         public void AutoClose()
