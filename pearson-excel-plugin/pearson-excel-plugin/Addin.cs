@@ -7,6 +7,8 @@ namespace Pearson.Excel.Plugin
     {
         public void AutoOpen()
         {
+            ExcelIntegration.RegisterUnhandledExceptionHandler(ex=>$"!!! EXCEPTION: {ex.ToString()}");
+
             var funcRegistration = new RemoteFunctions.FunctionRegistration();
             funcRegistration.Register();
         }

@@ -15,7 +15,7 @@ namespace Pearson.Excel.Plugin.RemoteFunctions
                     PythonFunctionName = "pyAddTwoNumbers",
                     NameForExcel = "autoregistered.addTwoNumbers",
                     DisableFunctionWizard = true,
-                    IsAsync = false,
+                    IsAsync = true,
                     InputParams = new[]
                     {
                         new ArgInfo{Name="x", Type = "double"},
