@@ -60,10 +60,9 @@ namespace Pearson.Excel.Plugin.RemoteFunctions
             return new ParameterConversionConfiguration()
                 .AddReturnConversion((type, customAttributes) => type != typeof(object)
                     ? null
-                    : ((Expression<Func<object, object>>)
-                        (returnValue => returnValue.Equals(ExcelError.ExcelErrorNA)
-                            ? ExcelError.ExcelErrorGettingData
-                            : returnValue)));
+                    : (Expression<Func<object, object>>) (returnValue => returnValue.Equals(ExcelError.ExcelErrorNA)
+                        ? "#BUSY" // or any other value, e.g. "#calculating..." or ExcelError.ExcelErrorGettingData
+                        : returnValue));
         }
 
         private LambdaExpression funcToExpression(FunctionInfo info)
