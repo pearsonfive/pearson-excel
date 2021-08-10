@@ -1,12 +1,10 @@
-﻿using System;
+﻿using ExcelDna.Integration;
+using ExcelDna.Registration;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reactive.Linq;
 using System.Threading;
-using ExcelDna.Integration;
-using ExcelDna.Registration;
-using ExcelDna.Registration.Utils;
-using NetOffice.ExcelApi;
 
 namespace Pearson.Excel.Plugin.RemoteFunctions
 {
