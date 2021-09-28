@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reactive.Linq;
 using System.Threading;
+using ExcelDna.Registration.Utils;
 
 namespace Pearson.Excel.Plugin.RemoteFunctions
 {
@@ -114,21 +115,21 @@ namespace Pearson.Excel.Plugin.RemoteFunctions
 
         private object executeFunctionAsync(FunctionInfo info, params object[] args)
         {
-            return ExcelAsyncUtil.Run(info.NameForExcel, args, delegate
-            {
-                Thread.Sleep(1000);
-                return "Function complete";
-            });
+            //return ExcelAsyncUtil.Run(info.NameForExcel, args, delegate
+            //{
+            //    Thread.Sleep(1000);
+            //    return "Function complete";
+            //});
 
-            //return ObservableRtdUtil.Observe(info.NameForExcel, args, GetObservableClock);
+            return ObservableRtdUtil.Observe(info.NameForExcel, args, GetObservableClock);
 
         }
 
-        //static IObservable<string> GetObservableClock()
-        //{
-        //    return Observable.Timer(dueTime: TimeSpan.Zero, period: TimeSpan.FromSeconds(1))
-        //        .Select(_ => DateTime.Now.ToString("HH:mm:ss"));
-        //}
+        static IObservable<string> GetObservableClock()
+        {
+            return Observable.Timer(dueTime: TimeSpan.Zero, period: TimeSpan.FromSeconds(1))
+                .Select(_ => DateTime.Now.ToString("HH:mm:ss"));
+        }
 
     }
 }
