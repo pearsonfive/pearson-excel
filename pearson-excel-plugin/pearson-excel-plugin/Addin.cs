@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Reactive.Linq;
 using ExcelDna.Integration;
+using ExcelDna.Registration;
 
 namespace Pearson.Excel.Plugin
 {
@@ -9,14 +11,28 @@ namespace Pearson.Excel.Plugin
         {
             ExcelIntegration.RegisterUnhandledExceptionHandler(ex=>$"!!! EXCEPTION: {ex.ToString()}");
 
-            var funcRegistration = new RemoteFunctions.FunctionRegistration();
-            funcRegistration.Register();
+            ExcelRegistration.GetExcelFunctions()
+                .ProcessAsyncRegistrations()
+                .RegisterFunctions();
+        }
+
+        [ExcelAsyncFunction]
+        public static IObservable<object> getInfiniteStream(double sleepInterval, object dummy)
+        {
+            var counter = 0;
+
+            return Observable.Interval(TimeSpan.FromSeconds(sleepInterval))
+                .Select(_ =>
+                {
+                    counter++;
+                    return counter as object;
+                });
         }
 
         public void AutoClose()
         {
-            // this never gets called
             throw new NotImplementedException();
         }
+
     }
 }
